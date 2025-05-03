@@ -1,8 +1,11 @@
+Ось оновлений варіант опису для DevPulse, адаптований під **Repository**, **CQS** та **Minimal API**:
+
+---
 
 # DevPulse
 
-> **UA | EN**  
-> 🇺🇦 Читай нижче українською  
+> **UA | EN**
+> 🇺🇦 Читай нижче українською
 > 🇬🇧 Scroll down for English
 
 ---
@@ -11,58 +14,65 @@
 
 **DevPulse** — це інструмент для розробника, який:
 
-- приходить на новий проєкт і нічого не розуміє;
-- боїться щось зламати;
-- витрачає 3 дні на розбір трьох файлів;
-- і при цьому його постійно смикають чатами, тасками, хаосом.
+* прийшов на новий проєкт і не розуміє, що відбувається;
+* боїться зламати щось важливе;
+* витрачає 3 дні на розбір одного класу;
+* і при цьому постійно відволікається на чати, таски та хаос.
 
 **DevPulse допомагає:**
-- Швидко зрозуміти незнайомий код
-- Знайти проблемні місця в проекті
-- Сфокусуватись без відволікань
-- Побачити, хто, коли і чому вносив зміни
-- Замінити 100 дурних питань AI-помічником
+
+* Швидко зрозуміти незнайомий код
+* Знайти слабкі місця проєкту
+* Працювати в фокусі без шуму
+* Переглянути історію змін з контекстом
+* Замінити 100 дурних питань AI-помічником
 
 ---
 
 ## 🎯 Основні можливості
 
-- **AI-пояснення коду:**  
-  Виділяєш — тиснеш — читаєш пояснення.
+* **AI-пояснення коду:**
+  Виділяєш → тиснеш → читаєш пояснення.
 
-- **Аналіз проблем (code smells):**  
-  “Метод на 300 рядків — це не ок.”
+* **Аналіз проблем у коді (code smells):**
+  “Метод на 300 рядків — це треш.”
 
-- **Історія змін з контекстом:**  
-  “Цей файл Вася редагував 5 разів. Востаннє — 2 тижні тому.”
+* **Контекстна історія змін:**
+  “Цей файл Вася редагував 5 разів. Востаннє — два тижні тому через баг в оплаті.”
 
-- **Фокус-мод (Pomodoro + блокування шуму):**  
-  Працюєш по 25 хв — DevPulse не дає відволікатись.
+* **Фокус-мод (Pomodoro + блокування шуму):**
+  Працюєш по 25 хвилин — DevPulse допомагає не відволікатись.
 
 ---
 
-## 🧩 Архітектура: Feature-Oriented Hexagon
+## 🧩 Архітектура: Feature-Oriented Hexagon (FOH)
 
-Ми використовуємо **FOH** — мікс DDD + Hexagonal Architecture, адаптований під реальні потреби:
+DevPulse побудований на базі **FOH** — адаптованої архітектури, яка поєднує ідеї **DDD**, **Hexagonal Architecture**, та **CQS**.
 
-- Кожна фіча — окрема капсула (`Features/<FeatureName>/`)
-- Бізнес-логіка всередині фічі
-- Інтерфейси зберігаються там, де бізнес
-- Інфраструктура — просто інструмент, не тягнеться в ядро
-- Вхід/вихід = контролери та адаптери (Hexagonal style)
+### Структура:
 
-✅ Мінімальна зв’язність  
-✅ Висока читабельність  
-✅ Швидке масштабування  
-✅ Чітке слідування SOLID / SRP / KISS
+* **Features/<FeatureName>/** — модульна бізнес-логіка, ізольована за фічами.
+* **Handlers** реалізують CQS (Command/Query Separation).
+* **Інтерфейси репозиторіїв** живуть поряд із логікою.
+* **Infrastructure** реалізує ці інтерфейси через **EF Core** та **Repository pattern**.
+* **Вхід у систему** — через **Minimal API** (чисті, легкі ендпоінти без контролерів).
+* **Бізнес не залежить від інфраструктури**: все працює через абстракції.
+
+### Принципи:
+
+✅ CQS (розділення читання/запису)
+✅ Repository для ізоляції доступу до БД
+✅ Мінімальний зв’язок між модулями
+✅ Висока тестованість і масштабованість
+✅ Дотримання SOLID / KISS / SRP
 
 ---
 
 ## 🤝 Як долучитись
 
-- Форкни репозиторій
-- Створи гілку `feature/назва`
-- Створи pull request з описом, що змінилось
+* Форкни репозиторій
+* Створи гілку `feature/назва`
+* Додай pull request з описом змін
 
 ---
 
@@ -74,8 +84,8 @@ MIT License
 
 ## 💬 Наостанок
 
-DevPulse — це не ще один pet-проєкт. Це відповідь на біль кожного інженера, який зайшов у нову кодову базу і почув у голові:  
-**“WTF is going on here?”**
+DevPulse — це не ще один pet-проєкт. Це реальна відповідь на біль кожного інженера, який відкрив кодову базу і подумав:
+**“WTF тут відбувається?”**
 
 ---
 
@@ -85,58 +95,65 @@ DevPulse — це не ще один pet-проєкт. Це відповідь �
 
 **DevPulse** is a developer assistant built for engineers who:
 
-- join a new project and feel lost;
-- are afraid to break things;
-- spend 3 days understanding 3 files;
-- constantly get distracted by messages, tasks, and chaos.
+* join a new project and feel completely lost;
+* are afraid of breaking things;
+* spend 3 days trying to understand a class;
+* constantly get distracted by messages and chaos.
 
 **DevPulse helps you:**
-- Quickly understand unfamiliar code
-- Detect problem areas in the project
-- Stay focused and undistracted
-- See who changed what and why
-- Replace dozens of beginner questions with AI help
+
+* Understand unknown code faster
+* Identify weak/problematic areas in the project
+* Stay focused with fewer distractions
+* See who made changes and why
+* Replace dozens of beginner questions with smart AI
 
 ---
 
 ## 🎯 Key Features
 
-- **AI-powered code explanation:**  
-  Select a block → Click → Get a human-friendly summary.
+* **AI-powered code explanation:**
+  Select → Click → Read the summary.
 
-- **Code quality analysis (code smells):**  
-  "This method has 300 lines — let’s fix that."
+* **Code smell analysis:**
+  "A 300-line method? Come on."
 
-- **Context-aware change history:**  
-  "This file was modified 5 times by John. Last time: 2 weeks ago — payment logic fix."
+* **Context-aware change history:**
+  "This file was changed 5 times by Alex. Last time — 2 weeks ago, fixing payment logic."
 
-- **Focus mode (Pomodoro + noise blocker):**  
-  Work in deep sessions — notifications muted.
+* **Focus mode (Pomodoro + noise block):**
+  Work in 25-minute sprints without distractions.
 
 ---
 
-## 🧩 Architecture: Feature-Oriented Hexagon
+## 🧩 Architecture: Feature-Oriented Hexagon (FOH)
 
-DevPulse uses **FOH** — a lightweight, scalable architecture inspired by DDD and Hexagonal principles.
+DevPulse is built using a custom lightweight architecture — **FOH** — inspired by **DDD**, **Hexagonal Architecture**, and **CQS** principles.
 
-- Each feature is isolated (`Features/<FeatureName>/`)
-- Business logic lives within the feature
-- Interfaces stay close to the domain
-- Infrastructure is external and replaceable
-- Clear input/output separation via ports & adapters
+### Structure:
 
-✅ Minimal coupling  
-✅ High readability  
-✅ Easy to scale  
-✅ Strict SOLID & clean code principles
+* `Features/<FeatureName>/` — encapsulated business logic per feature
+* **Handlers** follow CQS (Command/Query Separation)
+* Interfaces for repositories live next to the domain logic
+* **Infrastructure** implements those interfaces using **EF Core + Repository pattern**
+* Entry points use **Minimal API** — no heavy controllers
+* **Business logic never depends on infrastructure**
+
+### Core Values:
+
+✅ Clear CQS boundaries
+✅ Repository for DB access isolation
+✅ Minimal coupling
+✅ High testability and scalability
+✅ Respecting SOLID / KISS / SRP principles
 
 ---
 
 ## 🤝 Contributing
 
-- Fork the repo
-- Create a branch: `feature/your-feature`
-- Submit a PR with a clear description
+* Fork the repo
+* Create a branch: `feature/your-feature`
+* Submit a PR with a clean description
 
 ---
 
@@ -148,7 +165,9 @@ MIT License
 
 ## 💬 Final Words
 
-DevPulse isn’t a weekend experiment. It’s a practical response to the real pain of reading and working with messy codebases.
+DevPulse isn’t another side project. It’s a practical solution to a real problem every engineer has faced:
+**“WTF is going on in this codebase?”**
 
-If you’ve ever opened a project and thought:  
-**“WTF is this?”** — DevPulse is for you.
+---
+
+Якщо треба — можу зробити README.md або стартовий шаблон проекту на FOH. Хочеш?

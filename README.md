@@ -1,6 +1,4 @@
-Ось оновлений варіант опису для DevPulse, адаптований під **Repository**, **CQS** та **Minimal API**:
 
----
 
 # DevPulse
 

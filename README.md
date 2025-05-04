@@ -166,6 +166,3 @@ MIT License
 DevPulse isn’t another side project. It’s a practical solution to a real problem every engineer has faced:
 **“WTF is going on in this codebase?”**
 
----
-
-Якщо треба — можу зробити README.md або стартовий шаблон проекту на FOH. Хочеш?

@@ -8,7 +8,7 @@ public static class DependencyInjection
 {
     public static IServiceCollection AddFeature(this IServiceCollection services)
     {
-        services.AddScoped<GetProjectCommandHandler>();
+        services.AddScoped<GetByIdProjectQueryHandler>();
         services.AddScoped<CreateProjectCommandHandler>();
         return services;
     }

@@ -21,7 +21,7 @@ public static class ProjectEndpoints
         group.MapPost("/", async (CreateProjectRequest request, CreateProjectCommandHandler handler) =>
         {
             var response = await handler.Handle(request, CancellationToken.None);
-            return Results.Created($"/projects/{response.Id}", response);
+            return Results.Created($"/projects/{response.Data}", response);
         });
 
         return app;

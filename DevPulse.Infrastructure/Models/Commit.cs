@@ -1,7 +1,7 @@
 ﻿
 namespace DevPulse.Infrastructure.Models;
 
-public class CommitModel
+public class Commit
 {
     public Guid Id { get; set; }
 
@@ -15,5 +15,5 @@ public class CommitModel
 
     public required Guid ProjectId { get; set; }
  
-    public ProjectModel? Project { get; set; }
+    public Project? Project { get; set; }
 }

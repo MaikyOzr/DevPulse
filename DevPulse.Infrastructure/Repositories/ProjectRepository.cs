@@ -1,6 +1,7 @@
 ﻿using DevPulse.Features.Interfeces;
 using DevPulse.Features.ProjectFeature.DTOs.Response;
 using DevPulse.Infrastructure.Models;
+using DevPulse.Shared.DTOs.Response;
 using Microsoft.EntityFrameworkCore;
 
 namespace DevPulse.Infrastructure.Repositories
@@ -14,7 +15,7 @@ namespace DevPulse.Infrastructure.Repositories
 
         public async Task<Guid> CreateProject(string name, string repoUrl)
         {
-            var project = new ProjectModel
+            var project = new Project
             {
                 Name = name,
                 RepoUrl = repoUrl
@@ -29,16 +30,29 @@ namespace DevPulse.Infrastructure.Repositories
             throw new NotImplementedException();
         }
 
-        public async Task<GetProjectResponse> GetProject(Guid id)
+        public async Task<GetByIdProjectResponse> GetProject(Guid id)
         {
            return await appDbContext.Projects
                 .Where(x => x.Id == id)
+                .Include(p => p.Commits)
+                .Select(p => new GetByIdProjectResponse
+                {
+                    Name = p.Name,
+                    RepoUrl = p.RepoUrl,
+                })
+                .FirstOrDefaultAsync() ?? throw new Exception("Project not found");
+        }
+
+        public async Task<GetProjectResponse> GetProjects()
+        {
+            return await appDbContext.Projects
+                .Include(p => p.Commits)
                 .Select(p => new GetProjectResponse
                 {
                     Name = p.Name,
                     RepoUrl = p.RepoUrl
                 })
-                .FirstOrDefaultAsync() ?? throw new Exception("Project not found");
+                .FirstOrDefaultAsync() ?? throw new Exception("Projects not found");
         }
 
         public Task<bool> RemoveProjectFromUser(Guid projectId, Guid userId)

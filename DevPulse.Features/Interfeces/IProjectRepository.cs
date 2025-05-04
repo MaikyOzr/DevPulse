@@ -1,4 +1,5 @@
 ﻿using DevPulse.Features.ProjectFeature.DTOs.Response;
+using DevPulse.Shared.DTOs.Response;
 
 namespace DevPulse.Features.Interfeces;
 
@@ -14,5 +15,7 @@ public interface IProjectRepository
 
     public Task<bool> UpdateProject(Guid id, string name, string repoUrl);
 
-    public Task<GetProjectResponse> GetProject(Guid id);
+    public Task<GetByIdProjectResponse> GetProject(Guid id);
+
+    public Task<GetProjectResponse> GetProjects();
 }
